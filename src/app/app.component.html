@@ -1,0 +1,36 @@
+<div class="title">
+   {{"title"}}
+    <button style="float: right; margin-left: 10px;">left</button>
+    <button style="float: right;">right</button>
+</div>
+
+<div>
+    <form  (ngSubmit)="onSubmit(formOne)" #formOne="ngForm"> 
+        
+    <div style="margin:10px;display: inline-block;"> Make :<input name="make" type="text" [(ngModel)]="data2.make"></div>
+  
+  <div style="margin:10px;display: inline-block;"> Model :<input name="model" type="text" [(ngModel)]="data2.model"></div>
+  
+  <div style="margin:10px;display: inline-block;"> Date :<input name="date" type="text" [(ngModel)]="data2.date"></div>
+
+  <div>
+    <button type="submit">Sbumit</button>
+  </div>
+    </form>
+</div>
+
+<div class="test-header">
+    Selection:
+    <span id="selectedRows"></span>
+  </div>
+<ag-grid-angular style="width: 500px; height: 400px;" 
+#agGrid
+class="ag-theme-blham" 
+[rowData]="rowData"
+[columnDefs]="columnDefs"
+[rowSelection]="rowSelection"
+(rowClicked)='onRowClicked($event)'
+(cellClicked)='onCellClicked($event)'
+(selectionChanged) = 'onSelectionChanged($event)'
+>
+</ag-grid-angular>
