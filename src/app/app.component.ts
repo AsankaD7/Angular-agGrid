@@ -2,6 +2,7 @@ import { Component, Input, NgModule } from '@angular/core';
 import * as moment from 'moment';
 import { Data } from './data';
 import { NgForm } from '@angular/forms';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 
 
@@ -56,7 +57,8 @@ export class AppComponent {
   ];
   
   onSubmit(formData : NgForm){
-    console.log(this.data2);
+    console.log(formData);
+    console.log(formData.value);
   }
 
   onRowClicked(event: any) { console.log('row', event);
@@ -65,4 +67,8 @@ export class AppComponent {
   onCellClicked(event: any) { console.log('cell', event); }
   
   onSelectionChanged(event: any) { console.log("selection", event); }
+
+  logChange(data){
+     console.log(data);
+  }
 }

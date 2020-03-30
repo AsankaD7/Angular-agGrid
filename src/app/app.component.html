@@ -1,36 +1,42 @@
 <div class="title">
-   {{"title"}}
-    <button style="float: right; margin-left: 10px;">left</button>
-    <button style="float: right;">right</button>
+  {{"title"}}
+  <button style="float: right; margin-left: 10px;">left</button>
+  <button style="float: right;">right</button>
 </div>
 
 <div>
-    <form  (ngSubmit)="onSubmit(formOne)" #formOne="ngForm"> 
-        
-    <div style="margin:10px;display: inline-block;"> Make :<input name="make" type="text" [(ngModel)]="data2.make"></div>
-  
-  <div style="margin:10px;display: inline-block;"> Model :<input name="model" type="text" [(ngModel)]="data2.model"></div>
-  
-  <div style="margin:10px;display: inline-block;"> Date :<input name="date" type="text" [(ngModel)]="data2.date"></div>
+  <form (ngSubmit)="onSubmit(formOne)" #formOne="ngForm">
 
-  <div>
-    <button type="submit">Sbumit</button>
-  </div>
-    </form>
+    <div style="margin:10px;display: inline-block;"> Make :<input name="make" type="text" required [(ngModel)]="data2.make" #x
+        >
+
+      </div>
+
+    <div style="margin:10px;display: inline-block;"> Model :<input name="model1" type="text" [(ngModel)]="data2.model"
+        #model1="ngModel" required (change)="logChange(model1)" minlength="3" pattern="asanka">
+
+      <div *ngIf="!model1.valid">
+        <span *ngIf="model1.errors.required">model required</span>
+        <span *ngIf="model1.errors.minlength">min length 3</span>
+        <span *ngIf="model1.errors.pattern">pattern dosent match</span>
+      </div>
+    </div>
+    <div style="margin:10px;display: inline-block;"> Date :<input name="date" type="text" [(ngModel)]="data2.date">
+    </div>
+
+    <div>
+      <button type="submit">Sbumit</button>
+    </div>
+  </form>
 </div>
 
 <div class="test-header">
-    Selection:
-    <span id="selectedRows"></span>
-  </div>
-<ag-grid-angular style="width: 500px; height: 400px;" 
-#agGrid
-class="ag-theme-blham" 
-[rowData]="rowData"
-[columnDefs]="columnDefs"
-[rowSelection]="rowSelection"
-(rowClicked)='onRowClicked($event)'
-(cellClicked)='onCellClicked($event)'
-(selectionChanged) = 'onSelectionChanged($event)'
->
+  Selection:
+  <span id="selectedRows"></span>
+</div>
+<ag-grid-angular style="width: 500px; height: 400px;" #agGrid class="ag-theme-blham" [rowData]="rowData"
+  [columnDefs]="columnDefs" [rowSelection]="rowSelection" (rowClicked)='onRowClicked($event)'
+  (cellClicked)='onCellClicked($event)' (selectionChanged)='onSelectionChanged($event)'>
 </ag-grid-angular>
+
+{{x.className}}
