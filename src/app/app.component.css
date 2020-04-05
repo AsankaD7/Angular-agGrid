@@ -1,0 +1,15 @@
+
+.modal-header {
+  background-color: rgb(38, 5, 100);
+  color: white;
+}
+
+.close{
+    color: white;
+}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: white;
+  color: rgb(0, 0, 0);
+}
