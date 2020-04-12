@@ -84,7 +84,10 @@ export class AppComponent {
   /* file import funtion call */
   handleFileInput(event) {
     this.fileToUpload = event.target.files[0];
-    console.log(this.fileToUpload);
+    let file = event.target.files[0].name;
+    var ds = (new Date()).toISOString().replace(/[^0-9]/g, "");
+    let a = file.split('.').slice()[0] + ds +'.'+ file.split('.').slice()[1];
+    console.log(a);
   }
 
 
@@ -99,6 +102,9 @@ export class AppComponent {
   uploadFileToServer(){
     console.log(this.fileToUpload);
     if (this.fileToUpload !== null) {
+
+      let file = new Blob([""], {type: "application/csv"});
+
       const endpoint = 'http://localhost:8080/upload';
       const formData: FormData = new FormData();
       formData.append('file', this.fileToUpload, this.fileToUpload.name);
